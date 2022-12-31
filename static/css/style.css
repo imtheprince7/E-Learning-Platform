@@ -81,3 +81,7 @@
     background-image: linear-gradient( to right, rgba(255, 255, 0, 0.664), rgba(255, 166, 0, 0.664) );
  }
 
+
+ .feedback-form{
+    text-align: center;
+ }
