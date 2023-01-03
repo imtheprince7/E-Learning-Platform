@@ -14,9 +14,12 @@ app.use("/", express.static(path.join(__dirname, "static")));
 app.use(express.urlencoded({ extended : true }));
 
 const FeedBack = require('./database/models/feedbackmodel');
+const Register = require('./database/models/userregistrationmodel');
 
 
-//const conn = require('./database/connection');
+const register = require('./controller/register');
+const feedback = require('./controller/feedback');
+
 app.get("/", (req, resp) => {
   resp.render("index");
 });
@@ -32,27 +35,24 @@ app.get('/contact', (req, resp) => {
 app.get('/feedback', (req, resp) => {
     resp.render("feedback");
   });
-  
-  
-  app.post('/feedback', async (req, res) => {    
-    // body data
-    const { fname, email,feedback } = req.body;  
-    
-    let data = new FeedBack({
-      fullname:fname,
-      emailid:email,
-      comment: feedback
-    });
-    await data.save();    
-    res.render("feedback");
-
-  });
-
-app.get("/login", (req, resp) => {
-    resp.render("login");
-  });
-
   app.get("/register", (req, resp) => {
     resp.render("register");
   });
+
+// savind userData into DB calling Controller method & rendering page of Feedback && UserRegistration  
+  app.post('/feedback', async (req, res) => {    
+    feedback(req);   
+    res.render("feedback");
+  });  
+
+  app.post('/register', async (req, res)=>{
+    register(req)
+    res.render("register");
+  });
+
+
+  app.get("/login", (req, resp) => {
+    resp.render("login");
+  });
+
 app.listen(4000);

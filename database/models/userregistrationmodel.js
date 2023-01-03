@@ -5,11 +5,19 @@ const userRegistrationSchema = new mongoose.Schema({
         type:String,
         require:true
     },
-    name:{
+    fullname:{
         type:String,
         require:true
     },
     emailid: {
+        type:String,
+        require:true
+    },
+    password: {
+        type:String,
+        require:true
+    },
+    confirmpassword: {
         type:String,
         require:true
     },
@@ -31,4 +39,4 @@ const userRegistrationSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('usersregistration',userRegistrationSchema);
+module.exports = mongoose.model('registrationdetails',userRegistrationSchema);
