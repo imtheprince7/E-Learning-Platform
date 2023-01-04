@@ -3,11 +3,20 @@ const mongoose = require('mongoose');
 const feedbackschema = new mongoose.Schema({
     fullname:{
         type:String,
-        require:true
+        trim:true,
+        require:[true, "Please Enter Full Name"],
+        maxlength: 32 
     },
     emailid: {
         type:String,
-        require:true
+        trim:true,
+        require:[true, "Email Id required"],
+        unique:true,
+        match:[
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+            "Enter valid Email Id"
+        ]
+        
     },
     comment:{
         type:String,
