@@ -56,9 +56,9 @@ app.get('/feedback', (req, resp) => {
   });
 
  
-  app.get("/userregistration", (req, resp) => {
-    resp.render("userregistration");
+  app.get("/userdashboard", (req, resp) => {
+    resp.render("userdashboard");
   });
 
-  
+
 app.listen(4000);
