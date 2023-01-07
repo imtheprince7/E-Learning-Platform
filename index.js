@@ -55,4 +55,10 @@ app.get('/feedback', (req, resp) => {
     resp.render("login");
   });
 
+ 
+  app.get("/userregistration", (req, resp) => {
+    resp.render("userregistration");
+  });
+
+  
 app.listen(4000);
